@@ -17,8 +17,8 @@ public partial class App : Application
     {
         base.OnStartup(e);
 
-        _iconEnabled  = LoadIcon("ClickityClackity.Assets.icon_enabled.ico");
-        _iconDisabled = LoadIcon("ClickityClackity.Assets.icon_disabled.ico");
+        _iconEnabled  = LoadIcon("ClickityClackity.Assets.tray_enabled.ico");
+        _iconDisabled = LoadIcon("ClickityClackity.Assets.tray_disabled.ico");
 
         _tray = new System.Windows.Forms.NotifyIcon
         {

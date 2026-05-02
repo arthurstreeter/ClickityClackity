@@ -20,6 +20,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Assets\icon_enabled.ico"/>
     <EmbeddedResource Include="Assets\icon_disabled.ico"/>
+    <EmbeddedResource Include="Assets\tray_enabled.ico"/>
+    <EmbeddedResource Include="Assets\tray_disabled.ico"/>
   </ItemGroup>
 
 </Project>
