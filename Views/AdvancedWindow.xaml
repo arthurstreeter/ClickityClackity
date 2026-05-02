@@ -1,0 +1,141 @@
+<Window x:Class="ClickityClackity.Views.AdvancedWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Advanced Settings"
+        Height="680" Width="560"
+        MinHeight="500" MinWidth="480"
+        WindowStartupLocation="CenterOwner"
+        Background="#1E1E2E">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Themes/DarkTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="20,16,20,16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>   <!-- title -->
+            <RowDefinition Height="*"/>      <!-- content -->
+        </Grid.RowDefinitions>
+
+        <!-- ── Title ── -->
+        <TextBlock Grid.Row="0"
+                   Text="Advanced Settings"
+                   FontSize="18" FontWeight="Bold" FontFamily="Segoe UI"
+                   Foreground="{StaticResource Accent}"
+                   Margin="0,0,0,12"/>
+
+        <!-- ── Scrollable content ── -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+
+                <!-- ─── Per-Event Volumes ─── -->
+                <TextBlock Text="PER-EVENT VOLUMES" Style="{StaticResource SectionHeader}"/>
+                <Border Background="#181825" BorderBrush="{StaticResource Overlay}"
+                        BorderThickness="1" CornerRadius="6" Padding="12,8">
+                    <StackPanel x:Name="VolumesPanel"/>
+                </Border>
+
+                <!-- ─── Per-Key Overrides ─── -->
+                <Grid Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="PER-KEY SOUND OVERRIDES"
+                               Style="{StaticResource SectionHeader}"
+                               VerticalAlignment="Center"/>
+                    <Button x:Name="AddKeyButton" Grid.Column="1"
+                            Content="+ Add Key Override"
+                            Padding="10,4" Margin="0,8,0,4"
+                            Click="AddKeyOverride_Click"/>
+                </Grid>
+
+                <TextBlock x:Name="CaptureHint"
+                           Text="Click the button above, then press any key to create an override for it."
+                           Style="{StaticResource HintText}"
+                           Margin="0,0,0,6"/>
+
+                <Border Background="#181825" BorderBrush="{StaticResource Overlay}"
+                        BorderThickness="1" CornerRadius="6" Padding="12,8">
+                    <StackPanel x:Name="OverridesPanel">
+                        <!-- header row -->
+                        <Grid Margin="0,0,0,4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="26"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="KEY"     Style="{StaticResource SectionHeader}" Margin="0,0,0,0"/>
+                            <TextBlock Grid.Column="1" Text="SOUND"   Style="{StaticResource SectionHeader}" Margin="8,0,0,0"/>
+                            <TextBlock Grid.Column="2" Text="VOLUME"  Style="{StaticResource SectionHeader}" Margin="8,0,0,0"/>
+                        </Grid>
+                        <StackPanel x:Name="OverrideRowsPanel"/>
+                        <TextBlock x:Name="NoOverridesLabel"
+                                   Text="No overrides yet."
+                                   Style="{StaticResource HintText}"
+                                   Margin="0,4,0,4"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- ─── Pitch Settings ─── -->
+                <TextBlock Text="PITCH SETTINGS" Style="{StaticResource SectionHeader}"/>
+                <Border Background="#181825" BorderBrush="{StaticResource Overlay}"
+                        BorderThickness="1" CornerRadius="6" Padding="12,10">
+                    <StackPanel>
+
+                        <!-- Drag pitch range -->
+                        <Grid Margin="0,0,0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="160"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="60"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Drag pitch range"
+                                       Style="{StaticResource RowLabel}"/>
+                            <Slider Grid.Column="1" x:Name="DragPitchSlider"
+                                    Minimum="0" Maximum="24" Value="7"
+                                    VerticalAlignment="Center"
+                                    ValueChanged="DragPitchSlider_Changed"/>
+                            <TextBlock Grid.Column="2" x:Name="DragPitchLabel"
+                                       Text="±7 st" Style="{StaticResource RowLabel}"
+                                       HorizontalAlignment="Right"/>
+                        </Grid>
+
+                        <TextBlock Text="Right / Up = higher pitch    Left / Down = lower pitch"
+                                   Style="{StaticResource HintText}" Margin="0,0,0,12"/>
+
+                        <!-- Random pitch range -->
+                        <Grid Margin="0,0,0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="160"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="60"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Random variation"
+                                       Style="{StaticResource RowLabel}"/>
+                            <Slider Grid.Column="1" x:Name="RandomPitchSlider"
+                                    Minimum="0" Maximum="12" Value="0"
+                                    VerticalAlignment="Center"
+                                    ValueChanged="RandomPitchSlider_Changed"/>
+                            <TextBlock Grid.Column="2" x:Name="RandomPitchLabel"
+                                       Text="±0 st" Style="{StaticResource RowLabel}"
+                                       HorizontalAlignment="Right"/>
+                        </Grid>
+
+                        <TextBlock Text="Randomises pitch by ±N semitones on every sound played."
+                                   Style="{StaticResource HintText}"/>
+
+                    </StackPanel>
+                </Border>
+
+                <Rectangle Height="16"/>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
