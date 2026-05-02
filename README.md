@@ -52,6 +52,8 @@ No installer. No runtime to install. Just download, drop your sounds in, and run
 
 ### Main Window
 
+![Main Window](Assets/MainWindow.png)
+
 | Control | What it does |
 |---|---|
 | **● Active / ○ Inactive** toggle | Enable or disable all sound playback |
@@ -65,6 +67,8 @@ No installer. No runtime to install. Just download, drop your sounds in, and run
 | **Refresh** | Rescan the sounds folder for new files |
 
 ### Advanced Settings
+
+![Advanced Settings](Assets/AdvancedSettings.png)
 
 #### Per-Event Volumes
 Individual volume sliders for every event (0 – 200 %).
